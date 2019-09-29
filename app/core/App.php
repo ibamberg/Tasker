@@ -36,17 +36,17 @@ class App{
 
 	private function _getController(){
 		if (isset($this->_params[0]) and ! empty($this->_params[0])) {
-            $this->_controller = ucfirst($this->_params[0]);
-            unset($this->_params[0]);
-        }
+		    $this->_controller = ucfirst($this->_params[0]);
+		    unset($this->_params[0]);
+		}
 
 		$this->_controller = "app\controllers\\" . $this->_controller . 'Controller';
 
-        if (!class_exists($this->_controller)) {
-            throw new Exception("Controller {$this->_controller} does not exist!");
-        }
+		if (!class_exists($this->_controller)) {
+		    throw new Exception("Controller {$this->_controller} does not exist!");
+		}
 
-        $this->_controller = new $this->_controller;
+        	$this->_controller = new $this->_controller;
 	}
 
 	private function _getAction(){
@@ -57,16 +57,16 @@ class App{
 				$this->_action = $secondParam;
 				unset($this->_params[1]);
 			}
-        }
+        	}	
 
-        if(!method_exists($this->_controller, $this->_action)){
-        	throw new Exception("{$this->_action} does not exist!");
-        }
+		if(!method_exists($this->_controller, $this->_action)){
+			throw new Exception("{$this->_action} does not exist!");
+		}
 	}
 
 	 private function _getParams() {
-        $this->_params = $this->_params ? array_values($this->_params) : [];
-    }
+		$this->_params = $this->_params ? array_values($this->_params) : [];
+	 }
 
 	public function run(){
 		self::$user = new User;
