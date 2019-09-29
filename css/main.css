@@ -1,0 +1,15 @@
+html, 
+body {
+    height: 100%;
+}
+
+.w-20{
+	width: 20%;
+}
+
+.alert{
+	position: absolute;
+    z-index: 99999;
+    bottom: 0;
+    right: 15px;
+}
